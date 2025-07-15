@@ -94,23 +94,58 @@
         document.getElementById('english').classList.add('hidden');
         document.getElementById('arabic').classList.add('hidden');
         document.getElementById(lang).classList.remove('hidden');
+        if (lang === 'arabic') {
+          document.getElementById('nav-about').innerText = 'من نحن';
+          document.getElementById('nav-mission').innerText = 'مهمتنا';
+          document.getElementById('nav-news').innerText = 'الأخبار';
+          document.getElementById('nav-partners').innerText = 'الشركاء';
+          // Update hrefs for Arabic sections
+          document.getElementById('nav-about').setAttribute('href', '#overview-ar');
+          document.getElementById('nav-mission').setAttribute('href', '#project-ar');
+          document.getElementById('nav-news').setAttribute('href', '#news-ar');
+          document.getElementById('nav-partners').setAttribute('href', '#partners-ar');
+          document.getElementById('subtitle-en').style.display = 'none';
+          document.getElementById('subtitle-ar').style.display = 'block';
+          document.getElementById('lang-text').innerText = 'اختر اللغة:';
+          document.getElementById('lang-label').style.flexDirection = 'row-reverse';
+          document.getElementById('lang-switcher').style.justifyContent = 'centre';
+          document.getElementById('lang-switcher').style.direction = 'rtl';
+        } else {
+          document.getElementById('nav-about').innerText = 'About Us';
+          document.getElementById('nav-mission').innerText = 'Our Mission';
+          document.getElementById('nav-news').innerText = 'News';
+          document.getElementById('nav-partners').innerText = 'Partners';
+          // Update hrefs for English sections
+          document.getElementById('nav-about').setAttribute('href', '#overview');
+          document.getElementById('nav-mission').setAttribute('href', '#project');
+          document.getElementById('nav-news').setAttribute('href', '#news');
+          document.getElementById('nav-partners').setAttribute('href', '#partners');
+          document.getElementById('subtitle-en').style.display = 'block';
+          document.getElementById('subtitle-ar').style.display = 'none';
+          document.getElementById('lang-text').innerText = 'Select Language:';
+          document.getElementById('lang-label').style.flexDirection = 'row';
+          document.getElementById('lang-switcher').style.justifyContent = 'center';
+          document.getElementById('lang-switcher').style.direction = 'ltr';
+        }
       }
     </script>
   </head>
   <body>
     <header>
       <h1>Nafasy.ai</h1>
-      <p>Smartphone-Based Respiratory Disease Screening via AI</p>
+      <p id="subtitle-en" style="text-align:center;">Smartphone-Based Respiratory Disease Screening via AI</p>
+      <p id="subtitle-ar" class="ar" style="margin-top: 8px; font-size: 1.1em; display: none; text-align:center;">فحص الأمراض التنفسية باستخدام الذكاء الاصطناعي عبر الهاتف الذكي</p>
     </header>
 
     <nav>
-      <a href="#overview">About Us</a>
-      <a href="#project">Our Mission</a>
-      <a href="#news">News</a>
+      <a id="nav-about" href="#overview">About Us</a>
+      <a id="nav-mission" href="#project">Our Mission</a>
+      <a id="nav-news" href="#news">News</a>
+      <a id="nav-partners" href="#partners">Partners</a>
     </nav>
 
-    <div class="language-switcher">
-      <label for="language">🌐 Select Language: </label>
+    <div class="language-switcher" id="lang-switcher" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+      <label for="language" id="lang-label" style="display: flex; align-items: center; gap: 6px;"><span id="lang-text">Select Language:</span></label>
       <select onchange="switchLanguage(this.value)">
         <option value="english">English</option>
         <option value="arabic">العربية</option>
@@ -163,13 +198,14 @@
       </section>
 
       <section id="arabic" class="ar hidden">
-        <section>
+       
+        <section id="overview-ar">
           <h2>من نحن</h2>
           <p>يهدف نهجنا المبتكر إلى تقديم فحص أولي متفوق للأمراض التنفسية للمرضى والأطباء والحكومات، خاصة في البلدان منخفضة الدخل. من خلال توفير وسيلة فحص سريعة وغير جراحية وقابلة للتوسع، يدعم هذا المشروع التوجه الاستراتيجي لدولة الإمارات في الذكاء الاصطناعي والابتكار الصحي، ويهدف إلى تعزيز الاكتشاف المبكر وتوزيع الموارد والاستعداد الصحي العام لمواجهة التهديدات التنفسية الحالية والمستقبلية. نَفَسي.إي آي هو مشروع تجريبي تعاوني في دبي يجمع بين دبي الصحية وجامعة خليفة لتطوير تطبيق هاتف ذكي للفحص السريع وبتكلفة منخفضة للأمراض التنفسية المعدية (مثل الإنفلونزا، RSV، وكوفيد-19) باستخدام الذكاء الاصطناعي لتحليل أصوات السعال والتنفس. يهدف هذا النهج إلى تلبية الحاجة المتزايدة لأدوات تشخيصية قابلة للتوسع وسهلة الوصول، خاصة لإدارة الأوبئة وتحسين توزيع الموارد في قطاع الرعاية الصحية. يحقق المشروع فيما إذا كان تحليل الذكاء الاصطناعي لأصوات السعال المتعمد يمكنه التمييز بدقة بين الأفراد الأصحاء والمصابين بعدوى تنفسية، مع جمع بيانات عالية الجودة من مرضى الإمارات وتدريب خوارزمية إثبات المفهوم لسوق الإمارات.</p>
           <img src="heatmap.png" alt="خريطة حرارية لانتشار الأمراض التنفسية في دبي" style="max-width:100%;height:auto;margin:24px auto;border-radius:8px;display:block;" />
         </section>
 
-        <section>
+        <section id="project-ar">
           <h2>مهمتنا</h2>
           <p>نطمح إلى إعادة تعريف الرعاية الصحية بجعلها استباقية ووقائية من خلال الذكاء الاصطناعي المتقدم. هدفنا هو تمكين التشخيص السريع والموثوق الذي يمنح الأفراد ومقدمي الرعاية القوة. حلمنا هو بناء معيار عالمي لأدوات طبية ذكية وسهلة الاستخدام.</p>
           <ul>
@@ -183,7 +219,7 @@
           </ul>
         </section>
 
-        <section>
+        <section id="news-ar">
           <h2>الأخبار</h2>
           <p>
             في يونيو 2025، عرضنا تقنيتنا للفحص التنفسي المدعوم بالذكاء الاصطناعي في أسبوع أبوظبي العالمي للصحة، وجذبنا انتباه أكثر من 14,000 من قادة ومبتكري الصحة حول العالم. وخلال جلسة مغلقة مع دائرة الصحة في أبوظبي، تم الاعتراف بالحل لإمكاناته في دعم الفرز الدقيق مع الحفاظ على أمان وخصوصية بيانات المرضى محليًا. وبدعم من مؤسسات الصحة الإقليمية، يجري الآن تطوير المشروع في الإمارات لدعم التشخيصات القابلة للتوسع وذات التكلفة المعقولة عالميًا.
