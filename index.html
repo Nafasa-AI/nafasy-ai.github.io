@@ -1,317 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="AI-powered respiratory disease screening tool using cough and breathing sounds for Dubai Health applications." />
-    <title>Nafasy.ai - AI Respiratory Screening</title>
-    <style>
-      :root {
-        --primary-color: #003b6f;
-        --secondary-color: #00b4d8;
-        --background-color: #f4f9fb;
-        --text-color: #333;
-      }
-      body {
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        transition: all 0.3s ease-in-out;
-      }
-      header {
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 30px 20px;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="AI-powered respiratory disease screening tool using cough and breathing sounds for Dubai Health applications." />
+  <title>Nafasy.ai - AI Respiratory Screening</title>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #00b4d8;
+      --secondary-color: #00b4d8;
+      --background: #0a0a0a;
+      --card-bg: #181818;
+      --text-color: #fff;
+      --muted-text: #b2becd;
+      --button-bg: #00b4d8;
+      --button-hover: #39ff14;
+      --nav-bg: #181818;
+      --nav-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      --border-radius: 18px;
+      --section-padding: 48px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--background);
+      color: var(--text-color);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    header {
+      background: var(--nav-bg);
+      color: var(--text-color);
+      padding: 64px 20px 32px 20px;
+      text-align: center;
+      box-shadow: var(--nav-shadow);
+      border-bottom-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 3.2em;
+      margin-bottom: 0.2em;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: 1.5em;
+      color: var(--muted-text);
+      margin: 0 auto 18px auto;
+      max-width: 700px;
+      text-align: center !important;
+    }
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--nav-bg);
+        padding: 0 0 0 0;
+        box-shadow: var(--nav-shadow);
         text-align: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        min-height: 64px;
       }
-      nav {
-        text-align: center;
-        background-color: white;
-        padding: 10px 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-      nav a {
-        margin: 0 20px;
-        text-decoration: none;
-        color: var(--primary-color);
+      .nav-btn {
+        margin: 0 2px;
+        padding: 6px 14px;
+        border-radius: 6px;
+        border: 1.5px solid #fff;
+        background: #fff;
+        color: #181818;
         font-weight: 600;
-        transition: color 0.3s;
+        font-size: 0.98em;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+        outline: none;
+        box-shadow: none;
+        position: relative;
+        min-width: 80px;
       }
-      nav a:hover {
-        color: var(--secondary-color);
+      .nav-btn.active, .nav-btn:focus {
+        background: #fff;
+        color: var(--primary-color);
+        border-color: #fff;
+        box-shadow: 0 2px 12px rgba(0,180,216,0.10);
+      }
+      .nav-btn:hover:not(.active) {
+        background: #f0f0f0;
+        color: var(--primary-color);
+        border-color: #fff;
+      }
+      .ar .nav-btn {
+        font-family: 'Inter', 'Tahoma', sans-serif;
+        font-size: 1em;
+      }
+    .language-switcher {
+      margin: 18px auto 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      max-width: 340px;
+      background: #181818;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      padding: 8px 18px 8px 18px;
+    }
+    select {
+      padding: 7px 18px 7px 32px;
+      font-size: 1.05em;
+      border: 2px solid var(--primary-color);
+      border-radius: 7px;
+      background-color: #fff;
+      color: #181818;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,180,216,0.08);
+      transition: border 0.18s, box-shadow 0.18s;
+      appearance: none;
+      position: relative;
+      min-width: 110px;
+      outline: none;
+    }
+    select:focus, select:hover {
+      border: 2px solid #00b4d8;
+      box-shadow: 0 2px 12px rgba(0,180,216,0.18);
+    }
+    /* Custom arrow for select */
+    .language-switcher select {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%2300b4d8" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 18px 18px;
+    }
+    .language-switcher label {
+      color: #fff;
+      font-size: 1.05em;
+      font-weight: 600;
+      margin: 0 8px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ar .language-switcher {
+      flex-direction: row-reverse;
+      direction: rtl;
+    }
+    .ar .language-switcher label {
+      margin: 0 0 0 8px;
+      flex-direction: row-reverse;
+    }
+    main {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px 40px 16px;
+    }
+    .card-section {
+      margin-bottom: 40px;
+      padding: var(--section-padding);
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      transition: box-shadow 0.2s;
+    }
+    .card-section:hover {
+      box-shadow: 0 8px 32px rgba(0,180,216,0.18);
+    }
+    h2 {
+      color: var(--primary-color);
+      font-weight: 900;
+      font-size: 2em;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    p, ul li {
+      color: var(--muted-text);
+      font-size: 1.15em;
+      line-height: 1.7;
+      text-align: justify;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 10px 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+    ul li:hover {
+      color: var(--primary-color);
+      transform: translateX(8px) scale(1.03);
+    }
+    .cta-btn {
+      background: var(--button-bg);
+      color: #181818;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 36px;
+      font-size: 1.2em;
+      margin-top: 24px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cta-btn:hover {
+      background: var(--button-hover);
+      color: #fff;
+      transform: scale(1.06) translateY(-2px);
+    }
+    .ar {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Inter', 'Tahoma', sans-serif;
+    }
+    .hidden {
+      display: none;
+    }
+    /* About section two-column layout */
+    .about-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+      justify-content: space-between;
+    }
+    .about-text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .about-img {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-img img {
+      max-width: 420px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    /* Larger image for Our Vision section */
+    #vision .about-img img,
+    #vision-ar .about-img img {
+      max-width: 540px;
+    }
+    .about-text, .card-section, .ar .about-text, .ar .card-section {
+      text-align: justify;
+    }
+    @media (max-width: 900px) {
+      header {
+        padding: 40px 10px 20px 10px;
+      }
+      .card-section {
+        padding: 28px 10px;
       }
       main {
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        padding: 10px 32px 40px 32px;
+        padding: 0 4px 24px 4px;
       }
-      section {
-        margin-bottom: 50px;
-        padding: 30px;
-        background-color: transparent;
-        /* border-radius and box-shadow removed for flat appearance */
+      .about-row {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .about-img img {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
       }
       h2 {
-        color: var(--primary-color);
-        border-bottom: 2px solid var(--secondary-color);
-        padding-bottom: 10px;
+        font-size: 1.2em;
       }
-      ul li {
-        margin: 10px 0;
+      .card-section {
+        padding: 18px 2px;
       }
-      footer {
-        background-color: var(--primary-color);
-        color: white;
-        text-align: center;
-        padding: 15px;
+      nav {
+        flex-direction: column;
+        gap: 8px;
+        min-height: 48px;
       }
-      .language-switcher {
-        margin: 8px 0 0 0;
-        text-align: center;
+    }
+    footer {
+      background: #181818;
+      color: var(--muted-text);
+      text-align: center;
+      padding: 24px 0 12px 0;
+      font-size: 1.1em;
+      margin-top: 40px;
+      border-top: 1px solid #222;
+    }
+    .ar .about-row,
+    .ar .about-row-reverse {
+      flex-direction: row-reverse;
+    }
+    /* Flip Arabic about section: image right, text left */
+    .about-row-flip-ar {
+      flex-direction: row !important;
+    }
+    .ar nav {
+      flex-direction: row-reverse;
+    }
+    /* Back to Top button styles */
+    .back-to-top-btn {
+      display: block;
+      margin: 48px auto 0 auto;
+      padding: 16px 38px;
+      background: var(--primary-color);
+      color: #181818;
+      font-size: 1.18em;
+      font-weight: 800;
+      border: none;
+      border-radius: 32px;
+      box-shadow: 0 2px 16px rgba(0,180,216,0.18);
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, transform 0.15s, box-shadow 0.18s;
+      letter-spacing: 1px;
+      outline: none;
+    }
+    .back-to-top-btn:hover, .back-to-top-btn:focus {
+      background: #00b4d8;
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 4px 24px rgba(0,180,216,0.28);
+    }
+  </style>
+  <script>
+    function switchLanguage(lang) {
+      document.getElementById('english').classList.add('hidden');
+      document.getElementById('arabic').classList.add('hidden');
+      document.getElementById('main-nav-en').classList.add('hidden');
+      document.getElementById('main-nav-ar').classList.add('hidden');
+      if (lang === 'arabic') {
+        document.getElementById('arabic').classList.remove('hidden');
+        document.getElementById('main-nav-ar').classList.remove('hidden');
+        document.getElementById('subtitle-en').style.display = 'none';
+        document.getElementById('subtitle-ar').style.display = 'block';
+        document.getElementById('lang-text').innerText = 'اختر اللغة:';
+        document.getElementById('lang-label').style.flexDirection = 'row-reverse';
+        document.getElementById('lang-switcher').style.justifyContent = 'centre';
+        document.getElementById('lang-switcher').style.direction = 'rtl';
+      } else {
+        document.getElementById('english').classList.remove('hidden');
+        document.getElementById('main-nav-en').classList.remove('hidden');
+        document.getElementById('subtitle-en').style.display = 'block';
+        document.getElementById('subtitle-ar').style.display = 'none';
+        document.getElementById('lang-text').innerText = 'Select Language:';
+        document.getElementById('lang-label').style.flexDirection = 'row';
+        document.getElementById('lang-switcher').style.justifyContent = 'center';
+        document.getElementById('lang-switcher').style.direction = 'ltr';
       }
-      .ar {
-        direction: rtl;
-        text-align: right;
-        font-family: 'Tahoma', sans-serif;
-      }
-      .hidden {
-        display: none;
-      }
-      select {
-        padding: 8px 15px;
-        font-size: 1rem;
-        border: 1px solid var(--primary-color);
-        border-radius: 5px;
-        background-color: white;
-        cursor: pointer;
-      }
-    </style>
-    <script>
-      function switchLanguage(lang) {
-        document.getElementById('english').classList.add('hidden');
-        document.getElementById('arabic').classList.add('hidden');
-        document.getElementById(lang).classList.remove('hidden');
-        if (lang === 'arabic') {
-          document.getElementById('nav-about').innerText = 'من نحن';
-          document.getElementById('nav-technology').innerText = 'تقنيتنا';
-          document.getElementById('nav-vision').innerText = 'رؤيتنا';
-          document.getElementById('nav-applications').innerText = 'التطبيقات المحتملة';
-          document.getElementById('nav-leadership').innerText = 'القيادة';
-          document.getElementById('nav-news').innerText = 'الأخبار';
-          document.getElementById('nav-partners').innerText = 'الشركاء';
-          // Update hrefs for Arabic sections
-          document.getElementById('nav-about').setAttribute('href', '#overview-ar');
-          document.getElementById('nav-technology').setAttribute('href', '#technology-ar');
-          document.getElementById('nav-vision').setAttribute('href', '#vision-ar');
-          document.getElementById('nav-applications').setAttribute('href', '#applications-ar');
-          document.getElementById('nav-leadership').setAttribute('href', '#leadership-ar');
-          document.getElementById('nav-news').setAttribute('href', '#news-ar');
-          document.getElementById('nav-partners').setAttribute('href', '#partners-ar');
-          document.getElementById('subtitle-en').style.display = 'none';
-          document.getElementById('subtitle-ar').style.display = 'block';
-          document.getElementById('lang-text').innerText = 'اختر اللغة:';
-          document.getElementById('lang-label').style.flexDirection = 'row-reverse';
-          document.getElementById('lang-switcher').style.justifyContent = 'centre';
-          document.getElementById('lang-switcher').style.direction = 'rtl';
-        } else {
-          document.getElementById('nav-about').innerText = 'About Us';
-          document.getElementById('nav-technology').innerText = 'Technology';
-          document.getElementById('nav-vision').innerText = 'Vision';
-          document.getElementById('nav-applications').innerText = 'Applications';
-          document.getElementById('nav-leadership').innerText = 'Leadership';
-          document.getElementById('nav-news').innerText = 'News';
-          document.getElementById('nav-partners').innerText = 'Partners';
-          // Update hrefs for English sections
-          document.getElementById('nav-about').setAttribute('href', '#overview');
-          document.getElementById('nav-technology').setAttribute('href', '#technology');
-          document.getElementById('nav-vision').setAttribute('href', '#vision');
-          document.getElementById('nav-applications').setAttribute('href', '#applications');
-          document.getElementById('nav-leadership').setAttribute('href', '#leadership');
-          document.getElementById('nav-news').setAttribute('href', '#news');
-          document.getElementById('nav-partners').setAttribute('href', '#partners');
-          document.getElementById('subtitle-en').style.display = 'block';
-          document.getElementById('subtitle-ar').style.display = 'none';
-          document.getElementById('lang-text').innerText = 'Select Language:';
-          document.getElementById('lang-label').style.flexDirection = 'row';
-          document.getElementById('lang-switcher').style.justifyContent = 'center';
-          document.getElementById('lang-switcher').style.direction = 'ltr';
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <header>
-      <h1>Nafasy.ai</h1>
-      <p id="subtitle-en" style="text-align:center;">Smartphone-Based Respiratory Disease Screening via AI</p>
-      <p id="subtitle-ar" class="ar" style="margin-top: 8px; font-size: 1.1em; display: none; text-align:center;">فحص الأمراض التنفسية باستخدام الذكاء الاصطناعي عبر الهاتف الذكي</p>
-    </header>
+      // Toggle Back to Top button language
+      document.getElementById('back-to-top-en').style.display = (lang === 'arabic') ? 'none' : 'inline';
+      document.getElementById('back-to-top-ar').style.display = (lang === 'arabic') ? 'inline' : 'none';
+    }
 
-    <nav>
-      <a id="nav-about" href="#overview">About Us</a>
-      <a id="nav-technology" href="#technology">Technology</a>
-      <a id="nav-vision" href="#vision">Vision</a>
-      <a id="nav-applications" href="#applications">Applications</a>
-      <a id="nav-leadership" href="#leadership">Leadership</a>
-      <a id="nav-news" href="#news">News</a>
-      <a id="nav-partners" href="#partners">Partners</a>
-    </nav>
+    // Section reveal animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('main section');
+      const reveal = () => {
+        const trigger = window.innerHeight * 0.92;
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top < trigger) sec.classList.add('visible');
+        });
+      };
+      window.addEventListener('scroll', reveal);
+      reveal();
+    });
+  </script>
+</head>
 
-    <div class="language-switcher" id="lang-switcher" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-      <label for="language" id="lang-label" style="display: flex; align-items: center; gap: 6px;"><span id="lang-text">Select Language:</span></label>
-      <select onchange="switchLanguage(this.value)">
-        <option value="english">English</option>
-        <option value="arabic">العربية</option>
-      </select>
-    </div>
+<body>
+  <header>
+    <h1>Nafasy.ai</h1>
+    <p id="subtitle-en" class="subtitle" style="display:block;">AI-Powered Respiratory Health Screening</p>
+    <p id="subtitle-ar" class="ar subtitle" style="display:none;">فحص الصحة التنفسية بالذكاء الاصطناعي عبر الهاتف الذكي</p>
+   
+   <!-- <a href="#applications" class="cta-btn" style="display:inline-block;">See Applications</a> -->
+  </header>
 
-    <main>
-      <section id="english">
-        <section id="overview">
-          <h2>About Us</h2>
-          <p>We are pioneering a global transformation in health screening. By harnessing the power of artificial intelligence and the simplicity of a smartphone, we deliver real-time, low-cost, and non-invasive detection of respiratory conditions. Our mission is to empower patients, clinicians, and governments with superior, accessible technology, making proactive healthcare a reality for all.</p>
-          <img src="heatmap.png" alt="Heatmap of respiratory disease presence in Dubai" style="max-width:100%;height:auto;margin:24px auto;border-radius:8px;display:block;" />
-        </section>
+  <nav id="main-nav-en">
+    <a id="nav-about" href="#overview" class="nav-btn active">About Us</a>
+    <a id="nav-technology" href="#technology" class="nav-btn">Technology</a>
+    <a id="nav-vision" href="#vision" class="nav-btn">Vision</a>
+    <a id="nav-applications" href="#applications" class="nav-btn">Applications</a>
+    <a id="nav-leadership" href="#leadership" class="nav-btn">Leadership</a>
+    <a id="nav-news" href="#news" class="nav-btn">News</a>
+    <a id="nav-partners" href="#partners" class="nav-btn">Partners</a>
+  </nav>
+  <nav id="main-nav-ar" class="ar hidden">
+    <a id="nav-about-ar" href="#overview-ar" class="nav-btn active">من نحن</a>
+    <a id="nav-technology-ar" href="#technology-ar" class="nav-btn">تقنيتنا</a>
+    <a id="nav-vision-ar" href="#vision-ar" class="nav-btn">رؤيتنا</a>
+    <a id="nav-applications-ar" href="#applications-ar" class="nav-btn">التطبيقات المحتملة</a>
+    <a id="nav-leadership-ar" href="#leadership-ar" class="nav-btn">القيادة</a>
+    <a id="nav-news-ar" href="#news-ar" class="nav-btn">الأخبار</a>
+    <a id="nav-partners-ar" href="#partners-ar" class="nav-btn">الشركاء</a>
+  </nav>
 
-        <section id="technology">
-          <h2>Our Technology</h2>
-          <p>Our platform is built on a foundation of world-class research and extensive data. We use a patented ensemble-AI approach, co-developed with leading researchers from Stanford University and the University of Washington, to analyze sound patterns from breathing and coughs.</p>
-          <ul>
-            <li><b>Massive, Diverse Dataset:</b> Our algorithms are trained by leveraging transfer learning from a dataset of over 256,600 PCR-tested patients, ensuring robustness and accuracy.</li>
-            <li><b>Breakthrough Performance:</b> We have achieved 84% accuracy for COVID-19 screening, demonstrating the power of our unique technology.</li>
-            <li><b>Secure by Design:</b> Our system is built on secure cloud infrastructure, ensuring full compliance with UAE Federal Data Protection Law and DHA regulations for processing and storing user data.</li>
-            <li><b>U.S. Government Vetted:</b> We successfully completed a research and development contract with the U.S. Department of Health and Human Services (HHS) BARDA, developing the proof-of-concept for our diagnostic algorithm.</li>
-            <li><b>Real-World Application:</b> Our beta application was released to 4,500 users in Colombia, proving its viability in a real-world setting.</li>
-          </ul>
-        </section>
+  <!-- Language selector centered between nav and main content, outside of <main> and all cards -->
+  <div class="language-switcher" id="lang-switcher" style="margin: 32px auto 32px auto;">
+    <label for="language" id="lang-label"><span id="lang-text">Select Language:</span></label>
+    <select onchange="switchLanguage(this.value)">
+      <option value="english">English</option>
+      <option value="arabic">العربية</option>
+    </select>
+  </div>
 
-        <section id="vision">
-          <h2>A Vision for Proactive Healthcare</h2>
-          <p>We envision a future where healthcare is both proactive and preventative. This project aims to develop a smartphone app for rapid, cost-effective prescreening of infectious respiratory diseases like flu, RSV, and COVID-19. Our goal is to create a new global standard for smart, easy-to-use medical AI tools that provide early, accurate diagnoses, empowering individuals and healthcare professionals to act sooner and positioning the UAE as a global leader in advanced public health protection.</p>
-          <img src="AI Healthcare.png" alt="AI-powered respiratory health screening process diagram" style="max-width:500px;width:100%;height:auto;margin:24px auto;display:block;border-radius:8px;" />
-          <ul>
-            <li><b>Data Collection:</b> Cough into a Smartphone App</li>
-            <li><b>AI Analysis:</b> AI Detects Disease Sound Patterns</li>
-            <li><b>Use Cases:</b> Respiratory Infection Screening, Smoker Status Verification, Asthma Screening, Hajj/Umrah, Insurers, Schools</li>
-          </ul>
-          <!-- <p style="font-size:0.95em;color:#555;margin-top:8px;">*Patented AI Innovation Co-Developed with Stanford University</p> -->
-        </section>
-
-        <section id="applications">
-          <h2>Potential Applications</h2>
-          <ul>
-            <li><b>High-Density Public Gatherings:</b> Rapidly screen millions of pilgrims at events like Hajj and Umrah to detect flu, RSV, and COVID-19 before outbreaks can occur.</li>
-            <li><b>Airports & Border Control:</b> Implement targeted screening of passengers from high-risk regions to reduce the importation of infectious diseases.</li>
-            <li><b>Educational Institutions:</b> Facilitate regular screening in schools and early childhood settings to detect infections before they spread widely among children and their families.</li>
-            <li><b>Healthcare & Insurance:</b> Integrate into hospital and clinic workflows to prescreen patients with respiratory symptoms before escalating to more expensive tests, improving cost-efficiency.</li>
-            <li><b>Telemedicine & Remote Healthcare:</b> Enhance virtual consultations by enabling early detection of respiratory infections, allowing those in remote areas to access critical healthcare.</li>
-          </ul>
-        </section>
-
-        <section id="leadership">
-          <h2>Leadership</h2>
-          <ul>
-            <li><b><a href="https://www.linkedin.com/in/amilkhanzada" target="_blank">Amil Khanzada</a>, Founder & CEO:</b> A top computer science graduate from UC Berkeley with a background in the Berkeley/Stanford MBA/AI program and over a decade of experience in software development and managing cough data collection clinical studies.</li>
-            <li><b>Prof. Les Atlas, Co-Founder & CTO:</b> An Electrical and Computer Engineering Professor at the University of Washington and an IEEE Life Fellow. He is a leading expert in audio signal processing with a PhD from Stanford University and pioneered key concepts in convolutional neural networks.</li>
-            <li><b>Tamer Fahmy, MENA Regulatory Advisor:</b> An experienced advisor with over 20 years in the healthcare industry at Philips and Dräger. He holds an MBA from SP Jain School of Global Management and a BSc in Biomedical Engineering from Cairo University.</li>
-          </ul>
-        </section>
-
-        <section id="news">
-          <h2>News</h2>
-          <p>
-            Nafasy.ai's AI pilot program was recently highlighted in Abu Dhabi’s innovation showcase. In June 2025, we showcased our AI-powered respiratory screening technology at Abu Dhabi Global Health Week, drawing attention from over 14,000 global health leaders and innovators. During a closed-door session with the Department of Health Abu Dhabi, the solution was recognized for its potential to support high-accuracy triage while keeping patient data secure and local. With support from regional health institutions, the project is now being developed further in the UAE to support scalable and affordable diagnostics worldwide.
-          </p>
-          <p>Read the full article <a href="https://virufy.org/en/news/uae-adghw-apr-2025/" target="_blank">here</a>.
-          </p>
-          
-        </section>
-
-        <section id="partners">
-          <h2>Partners</h2>
-          <p>
-            Nafasy.ai has ambitious goals for the applications and impact its technology can create globally, and has chosen the UAE as its hub for launch. The project is part of Dubai-based venture development programme Prototypes for Humanity, within which it is in collaboration with Mohammed Bin Rashid University of Medicine and Health Sciences (MBRU), the learning and discovery arm of Dubai Health, as well as faculty from University of Washington.
-          </p>
-          
-        </section>
+  <main>
+    <section id="english">
+      <section id="overview" class="card-section">
+        <div class="about-row">
+          <div class="about-text">
+            <h2>About Us</h2>
+            <p>We are pioneering a global transformation in health screening. By harnessing the power of artificial intelligence and the simplicity of a smartphone, we deliver real-time, low-cost, and non-invasive detection of respiratory conditions. Our mission is to empower patients, clinicians, and governments with superior, accessible technology, making proactive healthcare a reality for all.</p>
+          </div>
+          <div class="about-img">
+            <img src="heatmap.png" alt="Heatmap of respiratory disease presence in Dubai" />
+          </div>
+        </div>
       </section>
 
-      <section id="arabic" class="ar hidden">
-        <section id="overview-ar">
-          <h2>من نحن</h2>
-          <p>نحن رواد في إحداث تحول عالمي في فحوصات الصحة. من خلال تسخير قوة الذكاء الاصطناعي وبساطة الهاتف الذكي، نقدم كشفًا فوريًا ومنخفض التكلفة وغير جراحي للحالات التنفسية. مهمتنا هي تمكين المرضى والأطباء والحكومات من خلال تكنولوجيا متقدمة وسهلة الوصول، لجعل الرعاية الصحية الاستباقية حقيقة للجميع.</p>
-          <img src="heatmap.png" alt="خريطة حرارية لانتشار الأمراض التنفسية في دبي" style="max-width:100%;height:auto;margin:24px auto;border-radius:8px;display:block;" />
-        </section>
-
-        <section id="technology-ar">
-          <h2>تقنيتنا</h2>
-          <p>منصتنا مبنية على أساس من الأبحاث العالمية والبيانات الواسعة. نستخدم نهج ذكاء اصطناعي جماعي حاصل على براءة اختراع، تم تطويره بالتعاون مع باحثين رائدين من جامعتي ستانفورد وواشنطن، لتحليل أنماط الأصوات الناتجة عن التنفس والسعال.</p>
-          <ul>
-            <li><b>مجموعة بيانات ضخمة ومتنوعة:</b> يتم تدريب خوارزمياتنا باستخدام التعلم الانتقالي من مجموعة بيانات تحتوي على أكثر من 256,600 مريض تم اختبارهم عبر فحص PCR، مما يضمن القوة والدقة.</li>
-            <li><b>أداء رائد:</b> حققنا دقة تصل إلى 84٪ في الكشف عن فيروس كوفيد-19، مما يبرز قوة تقنيتنا الفريدة.</li>
-            <li><b>آمن حسب التصميم:</b> تم بناء نظامنا على بنية تحتية سحابية آمنة، مع الالتزام الكامل بقانون حماية البيانات الاتحادي في الإمارات العربية المتحدة ولوائح هيئة الصحة بدبي (DHA) لمعالجة وتخزين بيانات المستخدمين.</li>
-            <li><b>تم التحقق منه من قبل الحكومة الأمريكية:</b> أكملنا بنجاح عقد بحث وتطوير مع وزارة الصحة والخدمات الإنسانية الأمريكية (HHS) BARDA، لتطوير نموذج إثبات المفهوم لخوارزمية التشخيص الخاصة بنا.</li>
-            <li><b>تطبيق فعلي في العالم الحقيقي:</b> تم إصدار تطبيقنا التجريبي لـ 4,500 مستخدم في كولومبيا، مما أثبت فعاليته في بيئة واقعية.</li>
-          </ul>
-          
-        </section>
-
-        <section id="vision-ar">
-          <h2>رؤيتنا للرعاية الصحية الاستباقية</h2>
-          <p>نتطلع إلى مستقبل تكون فيه الرعاية الصحية استباقية ووقائية. يهدف هذا المشروع إلى تطوير تطبيق هاتف ذكي للفحص السريع وبتكلفة منخفضة للأمراض التنفسية المعدية مثل الإنفلونزا وRSV وكوفيد-19. هدفنا هو إنشاء معيار عالمي جديد لأدوات الذكاء الاصطناعي الطبية الذكية وسهلة الاستخدام التي توفر تشخيصًا مبكرًا ودقيقًا، مما يمكّن الأفراد والمتخصصين من اتخاذ إجراءات أسرع ويجعل الإمارات رائدة عالميًا في حماية الصحة العامة المتقدمة.</p>
-          <img src="AI Healthcare.png" alt="مخطط فحص الصحة التنفسية بالذكاء الاصطناعي" style="max-width:500px;width:100%;height:auto;margin:24px auto;display:block;border-radius:8px;" />
-          <ul>
-            <li><b>جمع البيانات:</b> السعال في تطبيق الهاتف الذكي</li>
-            <li><b>تحليل الذكاء الاصطناعي:</b> الذكاء الاصطناعي يكتشف أنماط أصوات الأمراض</li>
-            <li><b>حالات الاستخدام:</b> فحص العدوى التنفسية، التحقق من حالة التدخين، فحص الربو، الحج/العمرة، شركات التأمين، المدارس</li>
-          </ul>
-          <!-- <p style="font-size:0.95em;color:#555;margin-top:8px;">*ابتكار ذكاء اصطناعي حاصل على براءة اختراع تم تطويره بالتعاون مع جامعة ستانفورد</p> -->
-        </section>
-
-        <section id="applications-ar">
-          <h2>التطبيقات المحتملة</h2>
-          <ul>
-            <li><b>التجمعات العامة الكثيفة:</b> فحص ملايين الحجاج بسرعة في مناسبات مثل الحج والعمرة لاكتشاف الإنفلونزا وRSV وكوفيد-19 قبل حدوث تفشيات.</li>
-            <li><b>المطارات ونقاط الحدود:</b> تنفيذ فحوصات مستهدفة للمسافرين من المناطق عالية الخطورة للحد من استيراد الأمراض المعدية.</li>
-            <li><b>المؤسسات التعليمية:</b> تسهيل الفحص المنتظم في المدارس ورياض الأطفال لاكتشاف العدوى قبل انتشارها بين الأطفال وعائلاتهم.</li>
-            <li><b>الرعاية الصحية والتأمين:</b> دمج الحل في سير العمل بالمستشفيات والعيادات لفحص المرضى ذوي الأعراض التنفسية قبل اللجوء لاختبارات أكثر تكلفة، مما يحسن الكفاءة.</li>
-            <li><b>الرعاية الصحية عن بعد:</b> تعزيز الاستشارات الافتراضية من خلال تمكين الكشف المبكر عن العدوى التنفسية، مما يسمح لسكان المناطق النائية بالحصول على رعاية صحية حاسمة.</li>
-          </ul>
-        </section>
-
-        <section id="leadership-ar">
-          <h2>القيادة</h2>
-          <ul>
-            <li><b><a href="https://www.linkedin.com/in/amilkhanzada" target="_blank">أميل خانزادا</a>، المؤسس والرئيس التنفيذي:</b> خريج متميز في علوم الحاسوب من جامعة كاليفورنيا بيركلي، بخلفية في برنامج ماجستير إدارة الأعمال/الذكاء الاصطناعي ببيركلي/ستانفورد، وأكثر من عشر سنوات من الخبرة في تطوير البرمجيات وإدارة دراسات جمع بيانات السعال السريرية.</li>
-            <li><b>البروفيسور ليس أطلس، الشريك المؤسس والمدير التقني:</b> أستاذ الهندسة الكهربائية وهندسة الحاسوب في جامعة واشنطن وزميل مدى الحياة في IEEE. خبير رائد في معالجة الإشارات الصوتية وحاصل على دكتوراه من جامعة ستانفورد، وطور مفاهيم أساسية في الشبكات العصبية الالتفافية.</li>
-            <li><b>تامر فهمي، مستشار اللوائح التنظيمية لمنطقة الشرق الأوسط وشمال أفريقيا:</b> مستشار ذو خبرة تزيد عن 20 عامًا في قطاع الرعاية الصحية في شركتي Philips وDräger. حاصل على ماجستير إدارة الأعمال من SP Jain وبكالوريوس في الهندسة الطبية الحيوية من جامعة القاهرة.</li>
-          </ul>
-        </section>
-
-        <section id="news-ar">
-          <h2>الأخبار</h2>
-          <p>
-            في يونيو 2025، عرضنا تقنيتنا للفحص التنفسي المدعوم بالذكاء الاصطناعي في أسبوع أبوظبي العالمي للصحة، وجذبنا انتباه أكثر من 14,000 من قادة ومبتكري الصحة حول العالم. وخلال جلسة مغلقة مع دائرة الصحة في أبوظبي، تم الاعتراف بالحل لإمكاناته في دعم الفرز الدقيق مع الحفاظ على أمان وخصوصية بيانات المرضى محليًا. وبدعم من مؤسسات الصحة الإقليمية، يجري الآن تطوير المشروع في الإمارات لدعم التشخيصات القابلة للتوسع وذات التكلفة المعقولة عالميًا.
-          </p>
-          <p>
-            تم تسليط الضوء على برنامج نَفَسي.إي آي التجريبي في معرض الابتكار بأبو ظبي. اقرأ الخبر كاملاً <a href="https://virufy.org/en/news/uae-adghw-apr-2025/" target="_blank">هنا</a>.
-          </p>
-        </section>
-
-        <section id="partners-ar">
-          <h2>الشركاء</h2>
-          <p>
-            لدى نَفَسي.إي آي أهداف طموحة للتطبيقات والأثر الذي يمكن أن تخلقه تقنيتها على مستوى العالم، وقد اختارت دولة الإمارات مركزًا لإطلاقها. المشروع هو جزء من برنامج تطوير المشاريع "نماذج من أجل الإنسانية" في دبي، ويتعاون ضمنه مع جامعة محمد بن راشد للطب والعلوم الصحية (MBRU)، الذراع التعليمية والاكتشافية لدبي الصحية، بالإضافة إلى أعضاء هيئة التدريس من جامعة واشنطن.
-          </p>
-          
-        </section>
+      <section id="technology" class="card-section">
+        <h2>Our Technology</h2>
+        <p>Our platform is built on a foundation of world-class research and extensive data. We use a patented ensemble-AI approach, co-developed with leading researchers from Stanford University and the University of Washington, to analyze sound patterns from breathing and coughs.</p>
+        <ul>
+          <li><b>Massive, Diverse Dataset:</b> Our algorithms are trained by leveraging transfer learning from a dataset of over 256,600 PCR-tested patients, ensuring robustness and accuracy.</li>
+          <li><b>Breakthrough Performance:</b> We have achieved 84% accuracy for COVID-19 screening, demonstrating the power of our unique technology.</li>
+          <li><b>Secure by Design:</b> Our system is built on secure cloud infrastructure, ensuring full compliance with UAE Federal Data Protection Law and DHA regulations for processing and storing user data.</li>
+          <li><b>U.S. Government Vetted:</b> We successfully completed a research and development contract with the U.S. Department of Health and Human Services (HHS) BARDA, developing the proof-of-concept for our diagnostic algorithm.</li>
+          <li><b>Real-World Application:</b> Our beta application was released to 4,500 users in Colombia, proving its viability in a real-world setting.</li>
+        </ul>
       </section>
-    </main>
 
-    <footer>
-      <p>© 2025 Nafasy.ai. All rights reserved.</p>
-    </footer>
-  </body>
+      <section id="vision" class="card-section">
+        <div class="about-row">
+          <div class="about-text">
+            <h2>Our Vision</h2>
+            <p>We envision a future where healthcare is both proactive and preventative. This project aims to develop a smartphone app for rapid, cost-effective prescreening of infectious respiratory diseases like flu, RSV, and COVID-19. Our goal is to create a new global standard for smart, easy-to-use medical AI tools that provide early, accurate diagnoses, empowering individuals and healthcare professionals to act sooner and positioning the UAE as a global leader in advanced public health protection.</p>
+            <ul>
+              <li><b>Data Collection:</b> Cough into a Smartphone App</li>
+              <li><b>AI Analysis:</b> AI Detects Disease Sound Patterns</li>
+              <li><b>Use Cases:</b> Respiratory Infection Screening, Smoker Status Verification, Asthma Screening, Hajj/Umrah, Insurers, Schools</li>
+            </ul>
+          </div>
+          <div class="about-img">
+            <img src="AI Healthcare.png" alt="AI-powered respiratory health screening process diagram" />
+          </div>
+        </div>
+      </section>
+
+      <section id="applications" class="card-section">
+        <h2>Potential Applications</h2>
+        <ul>
+          <li><b>High-Density Public Gatherings:</b> Rapidly screen millions of pilgrims at events like Hajj and Umrah to detect flu, RSV, and COVID-19 before outbreaks can occur.</li>
+          <li><b>Airports & Border Control:</b> Implement targeted screening of passengers from high-risk regions to reduce the importation of infectious diseases.</li>
+          <li><b>Educational Institutions:</b> Facilitate regular screening in schools and early childhood settings to detect infections before they spread widely among children and their families.</li>
+          <li><b>Healthcare & Insurance:</b> Integrate into hospital and clinic workflows to prescreen patients with respiratory symptoms before escalating to more expensive tests, improving cost-efficiency.</li>
+          <li><b>Telemedicine & Remote Healthcare:</b> Enhance virtual consultations by enabling early detection of respiratory infections, allowing those in remote areas to access critical healthcare.</li>
+        </ul>
+      </section>
+
+      <section id="leadership" class="card-section">
+        <h2>Leadership</h2>
+        <ul>
+          <li><b><a href="https://www.linkedin.com/in/amilkhanzada" target="_blank">Amil Khanzada</a>, Founder & CEO:</b> A top computer science graduate from UC Berkeley with a background in the Berkeley/Stanford MBA/AI program and over a decade of experience in software development and managing cough data collection clinical studies.</li>
+          <li><b>Prof. Les Atlas, Co-Founder & CTO:</b> An Electrical and Computer Engineering Professor at the University of Washington and an IEEE Life Fellow. He is a leading expert in audio signal processing with a PhD from Stanford University and pioneered key concepts in convolutional neural networks.</li>
+          <li><b>Tamer Fahmy, MENA Regulatory Advisor:</b> An experienced advisor with over 20 years in the healthcare industry at Philips and Dräger. He holds an MBA from SP Jain School of Global Management and a BSc in Biomedical Engineering from Cairo University.</li>
+        </ul>
+      </section>
+
+      <section id="news" class="card-section">
+        <h2>News</h2>
+        <p>
+          Nafasy.ai's AI pilot program was recently highlighted in Abu Dhabi’s innovation showcase. In June 2025, we showcased our AI-powered respiratory screening technology at Abu Dhabi Global Health Week, drawing attention from over 14,000 global health leaders and innovators. During a closed-door session with the Department of Health Abu Dhabi, the solution was recognized for its potential to support high-accuracy triage while keeping patient data secure and local. With support from regional health institutions, the project is now being developed further in the UAE to support scalable and affordable diagnostics worldwide.
+        </p>
+        <p>Read the full article <a href="https://virufy.org/en/news/uae-adghw-apr-2025/" target="_blank">here</a>.
+        </p>
+
+      </section>
+
+      <section id="partners" class="card-section">
+        <h2>Partners</h2>
+        <p>
+          Nafasy.ai has ambitious goals for the applications and impact its technology can create globally, and has chosen the UAE as its hub for launch. The project is part of Dubai-based venture development programme Prototypes for Humanity, within which it is in collaboration with Mohammed Bin Rashid University of Medicine and Health Sciences (MBRU), the learning and discovery arm of Dubai Health, as well as faculty from University of Washington.
+        </p>
+      </section>
+
+
+    </section>
+
+    <section id="arabic" class="ar hidden">
+      <section id="overview-ar" class="card-section">
+        <div class="about-row">
+          <div class="about-img">
+            <img src="heatmap.png" alt="خريطة حرارية لانتشار الأمراض التنفسية في دبي" />
+          </div>
+          <div class="about-text">
+            <h2>من نحن</h2>
+            <p>نحن رواد في إحداث تحول عالمي في فحوصات الصحة. من خلال تسخير قوة الذكاء الاصطناعي وبساطة الهاتف الذكي، نقدم كشفًا فوريًا ومنخفض التكلفة وغير جراحي للحالات التنفسية. مهمتنا هي تمكين المرضى والأطباء والحكومات من خلال تكنولوجيا متقدمة وسهلة الوصول، لجعل الرعاية الصحية الاستباقية حقيقة للجميع.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="technology-ar" class="card-section">
+        <h2>تقنيتنا</h2>
+        <p>منصتنا مبنية على أساس من الأبحاث العالمية والبيانات الواسعة. نستخدم نهج ذكاء اصطناعي جماعي حاصل على براءة اختراع، تم تطويره بالتعاون مع باحثين رائدين من جامعتي ستانفورد وواشنطن، لتحليل أنماط الأصوات الناتجة عن التنفس والسعال.</p>
+        <ul>
+          <li><b>مجموعة بيانات ضخمة ومتنوعة:</b> يتم تدريب خوارزمياتنا باستخدام التعلم الانتقالي من مجموعة بيانات تحتوي على أكثر من 256,600 مريض تم اختبارهم عبر فحص PCR، مما يضمن القوة والدقة.</li>
+          <li><b>أداء رائد:</b> حققنا دقة تصل إلى 84٪ في الكشف عن فيروس كوفيد-19، مما يبرز قوة تقنيتنا الفريدة.</li>
+          <li><b>آمن حسب التصميم:</b> تم بناء نظامنا على بنية تحتية سحابية آمنة، مع الالتزام الكامل بقانون حماية البيانات الاتحادي في الإمارات العربية المتحدة ولوائح هيئة الصحة بدبي (DHA) لمعالجة وتخزين بيانات المستخدمين.</li>
+          <li><b>تم التحقق منه من قبل الحكومة الأمريكية:</b> أكملنا بنجاح عقد بحث وتطوير مع وزارة الصحة والخدمات الإنسانية الأمريكية (HHS) BARDA، لتطوير نموذج إثبات المفهوم لخوارزمية التشخيص الخاصة بنا.</li>
+          <li><b>تطبيق فعلي في العالم الحقيقي:</b> تم إصدار تطبيقنا التجريبي لـ 4,500 مستخدم في كولومبيا، مما أثبت فعاليته في بيئة واقعية.</li>
+        </ul>
+
+      </section>
+
+      <section id="vision-ar" class="card-section">
+        <div class="about-row">
+          <div class="about-img">
+            <img src="AI Healthcare.png" alt="مخطط فحص الصحة التنفسية بالذكاء الاصطناعي" />
+          </div>
+          <div class="about-text">
+            <h2>رؤيتنا</h2>
+            <p>نتطلع إلى مستقبل تكون فيه الرعاية الصحية استباقية ووقائية. يهدف هذا المشروع إلى تطوير تطبيق هاتف ذكي للفحص السريع وبتكلفة منخفضة للأمراض التنفسية المعدية مثل الإنفلونزا وRSV وكوفيد-19. هدفنا هو إنشاء معيار عالمي جديد لأدوات الذكاء الاصطناعي الطبية الذكية وسهلة الاستخدام التي توفر تشخيصًا مبكرًا ودقيقًا، مما يمكّن الأفراد والمتخصصين من اتخاذ إجراءات أسرع ويجعل الإمارات رائدة عالميًا في حماية الصحة العامة المتقدمة.</p>
+            <ul>
+              <li><b>جمع البيانات:</b> السعال في تطبيق الهاتف الذكي</li>
+              <li><b>تحليل الذكاء الاصطناعي:</b> الذكاء الاصطناعي يكتشف أنماط أصوات الأمراض</li>
+              <li><b>حالات الاستخدام:</b> فحص العدوى التنفسية، التحقق من حالة التدخين، فحص الربو، الحج/العمرة، شركات التأمين، المدارس</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="applications-ar" class="card-section">
+        <h2>التطبيقات المحتملة</h2>
+        <ul>
+          <li><b>التجمعات العامة الكثيفة:</b> فحص ملايين الحجاج بسرعة في مناسبات مثل الحج والعمرة لاكتشاف الإنفلونزا وRSV وكوفيد-19 قبل حدوث تفشيات.</li>
+          <li><b>المطارات ونقاط الحدود:</b> تنفيذ فحوصات مستهدفة للمسافرين من المناطق عالية الخطورة للحد من استيراد الأمراض المعدية.</li>
+          <li><b>المؤسسات التعليمية:</b> تسهيل الفحص المنتظم في المدارس ورياض الأطفال لاكتشاف العدوى قبل انتشارها بين الأطفال وعائلاتهم.</li>
+          <li><b>الرعاية الصحية والتأمين:</b> دمج الحل في سير العمل بالمستشفيات والعيادات لفحص المرضى ذوي الأعراض التنفسية قبل اللجوء لاختبارات أكثر تكلفة، مما يحسن الكفاءة.</li>
+          <li><b>الرعاية الصحية عن بعد:</b> تعزيز الاستشارات الافتراضية من خلال تمكين الكشف المبكر عن العدوى التنفسية، مما يسمح لسكان المناطق النائية بالحصول على رعاية صحية حاسمة.</li>
+        </ul>
+      </section>
+
+      <section id="leadership-ar" class="card-section">
+        <h2>القيادة</h2>
+        <ul>
+          <li><b><a href="https://www.linkedin.com/in/amilkhanzada" target="_blank">أميل خانزادا</a>، المؤسس والرئيس التنفيذي:</b> خريج متميز في علوم الحاسوب من جامعة كاليفورنيا بيركلي، بخلفية في برنامج ماجستير إدارة الأعمال/الذكاء الاصطناعي ببيركلي/ستانفورد، وأكثر من عشر سنوات من الخبرة في تطوير البرمجيات وإدارة دراسات جمع بيانات السعال السريرية.</li>
+          <li><b>البروفيسور ليس أطلس، الشريك المؤسس والمدير التقني:</b> أستاذ الهندسة الكهربائية وهندسة الحاسوب في جامعة واشنطن وزميل مدى الحياة في IEEE. خبير رائد في معالجة الإشارات الصوتية وحاصل على دكتوراه من جامعة ستانفورد، وطور مفاهيم أساسية في الشبكات العصبية الالتفافية.</li>
+          <li><b>تامر فهمي، مستشار اللوائح التنظيمية لمنطقة الشرق الأوسط وشمال أفريقيا:</b> مستشار ذو خبرة تزيد عن 20 عامًا في قطاع الرعاية الصحية في شركتي Philips وDräger. حاصل على ماجستير إدارة الأعمال من SP Jain وبكالوريوس في الهندسة الطبية الحيوية من جامعة القاهرة.</li>
+        </ul>
+      </section>
+
+      <section id="news-ar" class="card-section">
+        <h2>الأخبار</h2>
+        <p>
+          في يونيو 2025، عرضنا تقنيتنا للفحص التنفسي المدعوم بالذكاء الاصطناعي في أسبوع أبوظبي العالمي للصحة، وجذبنا انتباه أكثر من 14,000 من قادة ومبتكري الصحة حول العالم. وخلال جلسة مغلقة مع دائرة الصحة في أبوظبي، تم الاعتراف بالحل لإمكاناته في دعم الفرز الدقيق مع الحفاظ على أمان وخصوصية بيانات المرضى محليًا. وبدعم من مؤسسات الصحة الإقليمية، يجري الآن تطوير المشروع في الإمارات لدعم التشخيصات القابلة للتوسع وذات التكلفة المعقولة عالميًا.
+        </p>
+        <p>
+          تم تسليط الضوء على برنامج نَفَسي.إي آي التجريبي في معرض الابتكار بأبو ظبي. اقرأ الخبر كاملاً <a href="https://virufy.org/en/news/uae-adghw-apr-2025/" target="_blank">هنا</a>.
+        </p>
+      </section>
+
+      <section id="partners-ar" class="card-section">
+        <h2>الشركاء</h2>
+        <p>
+          لدى نَفَسي.إي آي أهداف طموحة للتطبيقات والأثر الذي يمكن أن تخلقه تقنيتها على مستوى العالم، وقد اختارت دولة الإمارات مركزًا لإطلاقها. المشروع هو جزء من برنامج تطوير المشاريع "نماذج من أجل الإنسانية" في دبي، ويتعاون ضمنه مع جامعة محمد بن راشد للطب والعلوم الصحية (MBRU)، الذراع التعليمية والاكتشافية لدبي الصحية، بالإضافة إلى أعضاء هيئة التدريس من جامعة واشنطن.
+        </p>
+      </section>
+
+
+    </section>
+  </main>
+  <!-- Back to Top Button (both languages) -->
+  <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+    <span id="back-to-top-en">Back to Top</span>
+    <span id="back-to-top-ar" style="display:none;">العودة للأعلى</span>
+  </button>
+
+  <footer>
+    <p style="margin: 0; text-align: center; width: 100%;">© 2025 Nafasy.ai. All rights reserved.</p>
+  </footer>
+</body>
+
 </html>
