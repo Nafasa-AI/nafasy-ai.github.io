@@ -96,12 +96,18 @@
         document.getElementById(lang).classList.remove('hidden');
         if (lang === 'arabic') {
           document.getElementById('nav-about').innerText = 'من نحن';
-          document.getElementById('nav-mission').innerText = 'مهمتنا';
+          document.getElementById('nav-technology').innerText = 'تقنيتنا';
+          document.getElementById('nav-vision').innerText = 'رؤيتنا';
+          document.getElementById('nav-applications').innerText = 'التطبيقات المحتملة';
+          document.getElementById('nav-leadership').innerText = 'القيادة';
           document.getElementById('nav-news').innerText = 'الأخبار';
           document.getElementById('nav-partners').innerText = 'الشركاء';
           // Update hrefs for Arabic sections
           document.getElementById('nav-about').setAttribute('href', '#overview-ar');
-          document.getElementById('nav-mission').setAttribute('href', '#project-ar');
+          document.getElementById('nav-technology').setAttribute('href', '#technology-ar');
+          document.getElementById('nav-vision').setAttribute('href', '#vision-ar');
+          document.getElementById('nav-applications').setAttribute('href', '#applications-ar');
+          document.getElementById('nav-leadership').setAttribute('href', '#leadership-ar');
           document.getElementById('nav-news').setAttribute('href', '#news-ar');
           document.getElementById('nav-partners').setAttribute('href', '#partners-ar');
           document.getElementById('subtitle-en').style.display = 'none';
@@ -112,12 +118,18 @@
           document.getElementById('lang-switcher').style.direction = 'rtl';
         } else {
           document.getElementById('nav-about').innerText = 'About Us';
-          document.getElementById('nav-mission').innerText = 'Our Mission';
+          document.getElementById('nav-technology').innerText = 'Technology';
+          document.getElementById('nav-vision').innerText = 'Vision';
+          document.getElementById('nav-applications').innerText = 'Applications';
+          document.getElementById('nav-leadership').innerText = 'Leadership';
           document.getElementById('nav-news').innerText = 'News';
           document.getElementById('nav-partners').innerText = 'Partners';
           // Update hrefs for English sections
           document.getElementById('nav-about').setAttribute('href', '#overview');
-          document.getElementById('nav-mission').setAttribute('href', '#project');
+          document.getElementById('nav-technology').setAttribute('href', '#technology');
+          document.getElementById('nav-vision').setAttribute('href', '#vision');
+          document.getElementById('nav-applications').setAttribute('href', '#applications');
+          document.getElementById('nav-leadership').setAttribute('href', '#leadership');
           document.getElementById('nav-news').setAttribute('href', '#news');
           document.getElementById('nav-partners').setAttribute('href', '#partners');
           document.getElementById('subtitle-en').style.display = 'block';
@@ -139,7 +151,10 @@
 
     <nav>
       <a id="nav-about" href="#overview">About Us</a>
-      <a id="nav-mission" href="#project">Our Mission</a>
+      <a id="nav-technology" href="#technology">Technology</a>
+      <a id="nav-vision" href="#vision">Vision</a>
+      <a id="nav-applications" href="#applications">Applications</a>
+      <a id="nav-leadership" href="#leadership">Leadership</a>
       <a id="nav-news" href="#news">News</a>
       <a id="nav-partners" href="#partners">Partners</a>
     </nav>
@@ -156,21 +171,51 @@
       <section id="english">
         <section id="overview">
           <h2>About Us</h2>
-          <p>Our innovative approach aims to offer superior respiratory disease pre-screening for patients, clinicians and governments, especially in low-income countries. By providing a rapid, non-invasive, and scalable screening method, this initiative supports the UAE's strategic focus on AI and healthcare innovation, and aims to enhance early detection, resource allocation, and public health preparedness against current and future respiratory threats. Nafasy.ai is a Dubai-based collaborative pilot project uniting Dubai Health and Khalifa University to develop a smartphone app for rapid, cost-effective prescreening of infectious respiratory diseases (e.g., flu, RSV, COVID-19) using AI-powered analysis of cough and breathing sounds. This approach addresses the need for scalable, accessible diagnostic tools, especially for managing outbreaks and improving healthcare resource allocation. The project investigates whether AI analysis of intentional cough sounds can accurately distinguish between healthy individuals and those with respiratory infections, aiming to collect a high-quality dataset from UAE patients and train a proof-of-concept AI algorithm for the UAE market.</p>
+          <p>We are pioneering a global transformation in health screening. By harnessing the power of artificial intelligence and the simplicity of a smartphone, we deliver real-time, low-cost, and non-invasive detection of respiratory conditions. Our mission is to empower patients, clinicians, and governments with superior, accessible technology, making proactive healthcare a reality for all.</p>
           <img src="heatmap.png" alt="Heatmap of respiratory disease presence in Dubai" style="max-width:100%;height:auto;margin:24px auto;border-radius:8px;display:block;" />
         </section>
 
-        <section id="project">
-          <h2>Our Mission</h2>
-          <p>We aspire to redefine healthcare by making it anticipatory and preventative through advanced AI. Our goal is to enable fast, reliable diagnostics that empower individuals and providers alike. Our dream is to build a global standard for smart, easy-to-use medical tools.</p>
+        <section id="technology">
+          <h2>Our Technology</h2>
+          <p>Our platform is built on a foundation of world-class research and extensive data. We use a patented ensemble-AI approach, co-developed with leading researchers from Stanford University and the University of Washington, to analyze sound patterns from breathing and coughs.</p>
           <ul>
-            <li>Develop and validate a secure, user-friendly smartphone application for acquiring intentional cough, breathing, and speech sound samples from participants, ensuring compliance with UAE regulations.</li>
-            <li>Prospectively collect a high-quality dataset of intentional audio sounds and associated clinical data from consenting adult patients presenting for gold-standard respiratory panel testing at partner clinics in Dubai (target: minimum 120 participants, at least 50% positive cases).</li>
-            <li>Preprocess collected audio data (noise reduction, segmentation, feature extraction) to ensure quality and suitability for AI model training.</li>
-            <li>Train a proof-of-concept AI algorithm using machine learning techniques to classify individuals as healthy or unhealthy based on features extracted from their cough sounds.</li>
-            <li>Validate the AI model's performance, aiming for at least 75% sensitivity and 75% specificity, against gold-standard respiratory panel tests using appropriate statistical methods.</li>
-            <li>Evaluate the feasibility of this approach for improving respiratory disease surveillance and early detection within the UAE healthcare ecosystem.</li>
-            <li>Support public health preparedness and proactive respiratory disease management across primary care, telemedicine, educational institutions, large events, and transportation hubs.</li>
+            <li><b>Massive, Diverse Dataset:</b> Our algorithms are trained by leveraging transfer learning from a dataset of over 256,600 PCR-tested patients, ensuring robustness and accuracy.</li>
+            <li><b>Breakthrough Performance:</b> We have achieved 84% accuracy for COVID-19 screening, demonstrating the power of our unique technology.</li>
+            <li><b>Secure by Design:</b> Our system is built on secure cloud infrastructure, ensuring full compliance with UAE Federal Data Protection Law and DHA regulations for processing and storing user data.</li>
+            <li><b>U.S. Government Vetted:</b> We successfully completed a research and development contract with the U.S. Department of Health and Human Services (HHS) BARDA, developing the proof-of-concept for our diagnostic algorithm.</li>
+            <li><b>Real-World Application:</b> Our beta application was released to 4,500 users in Colombia, proving its viability in a real-world setting.</li>
+          </ul>
+        </section>
+
+        <section id="vision">
+          <h2>A Vision for Proactive Healthcare</h2>
+          <p>We envision a future where healthcare is both proactive and preventative. This project aims to develop a smartphone app for rapid, cost-effective prescreening of infectious respiratory diseases like flu, RSV, and COVID-19. Our goal is to create a new global standard for smart, easy-to-use medical AI tools that provide early, accurate diagnoses, empowering individuals and healthcare professionals to act sooner and positioning the UAE as a global leader in advanced public health protection.</p>
+          <img src="AI Healthcare.png" alt="AI-powered respiratory health screening process diagram" style="max-width:500px;width:100%;height:auto;margin:24px auto;display:block;border-radius:8px;" />
+          <ul>
+            <li><b>Data Collection:</b> Cough into a Smartphone App</li>
+            <li><b>AI Analysis:</b> AI Detects Disease Sound Patterns</li>
+            <li><b>Use Cases:</b> Respiratory Infection Screening, Smoker Status Verification, Asthma Screening, Hajj/Umrah, Insurers, Schools</li>
+          </ul>
+          <!-- <p style="font-size:0.95em;color:#555;margin-top:8px;">*Patented AI Innovation Co-Developed with Stanford University</p> -->
+        </section>
+
+        <section id="applications">
+          <h2>Potential Applications</h2>
+          <ul>
+            <li><b>High-Density Public Gatherings:</b> Rapidly screen millions of pilgrims at events like Hajj and Umrah to detect flu, RSV, and COVID-19 before outbreaks can occur.</li>
+            <li><b>Airports & Border Control:</b> Implement targeted screening of passengers from high-risk regions to reduce the importation of infectious diseases.</li>
+            <li><b>Educational Institutions:</b> Facilitate regular screening in schools and early childhood settings to detect infections before they spread widely among children and their families.</li>
+            <li><b>Healthcare & Insurance:</b> Integrate into hospital and clinic workflows to prescreen patients with respiratory symptoms before escalating to more expensive tests, improving cost-efficiency.</li>
+            <li><b>Telemedicine & Remote Healthcare:</b> Enhance virtual consultations by enabling early detection of respiratory infections, allowing those in remote areas to access critical healthcare.</li>
+          </ul>
+        </section>
+
+        <section id="leadership">
+          <h2>Leadership</h2>
+          <ul>
+            <li><b><a href="https://www.linkedin.com/in/amilkhanzada" target="_blank">Amil Khanzada</a>, Founder & CEO:</b> A top computer science graduate from UC Berkeley with a background in the Berkeley/Stanford MBA/AI program and over a decade of experience in software development and managing cough data collection clinical studies.</li>
+            <li><b>Prof. Les Atlas, Co-Founder & CTO:</b> An Electrical and Computer Engineering Professor at the University of Washington and an IEEE Life Fellow. He is a leading expert in audio signal processing with a PhD from Stanford University and pioneered key concepts in convolutional neural networks.</li>
+            <li><b>Tamer Fahmy, MENA Regulatory Advisor:</b> An experienced advisor with over 20 years in the healthcare industry at Philips and Dräger. He holds an MBA from SP Jain School of Global Management and a BSc in Biomedical Engineering from Cairo University.</li>
           </ul>
         </section>
 
@@ -187,35 +232,61 @@
         <section id="partners">
           <h2>Partners</h2>
           <p>
-            Nafasy.ai has ambitious goals for the applications and impact its technology can create globally, and has chosen the UAE as its hub for launch. The project is part of Dubai-based venture development programme Prototypes for Humanity, within which it is in collaboration with Mohammed Bin Rashid University of Medicine and Health Sciences (MBRU), the learning and discovery arm of Dubai Health, as well as Khalifa University.
+            Nafasy.ai has ambitious goals for the applications and impact its technology can create globally, and has chosen the UAE as its hub for launch. The project is part of Dubai-based venture development programme Prototypes for Humanity, within which it is in collaboration with Mohammed Bin Rashid University of Medicine and Health Sciences (MBRU), the learning and discovery arm of Dubai Health, as well as faculty from University of Washington.
           </p>
-          <div style="display: flex; gap: 32px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 16px;">
-            <img src="KU.png" alt="Khalifa University Logo" style="height: 100px; max-width: 220px; width: auto;" />
-            <img src="MBRU.png" alt="MBRU Logo" style="height: 100px; max-width: 220px; width: auto;" />
-            <img src="dh.png" alt="Dubai Health Logo" style="height: 100px; max-width: 220px; width: auto;" />
-          </div>
+          
         </section>
       </section>
 
       <section id="arabic" class="ar hidden">
-       
         <section id="overview-ar">
           <h2>من نحن</h2>
-          <p>يهدف نهجنا المبتكر إلى تقديم فحص أولي متفوق للأمراض التنفسية للمرضى والأطباء والحكومات، خاصة في البلدان منخفضة الدخل. من خلال توفير وسيلة فحص سريعة وغير جراحية وقابلة للتوسع، يدعم هذا المشروع التوجه الاستراتيجي لدولة الإمارات في الذكاء الاصطناعي والابتكار الصحي، ويهدف إلى تعزيز الاكتشاف المبكر وتوزيع الموارد والاستعداد الصحي العام لمواجهة التهديدات التنفسية الحالية والمستقبلية. نَفَسي.إي آي هو مشروع تجريبي تعاوني في دبي يجمع بين دبي الصحية وجامعة خليفة لتطوير تطبيق هاتف ذكي للفحص السريع وبتكلفة منخفضة للأمراض التنفسية المعدية (مثل الإنفلونزا، RSV، وكوفيد-19) باستخدام الذكاء الاصطناعي لتحليل أصوات السعال والتنفس. يهدف هذا النهج إلى تلبية الحاجة المتزايدة لأدوات تشخيصية قابلة للتوسع وسهلة الوصول، خاصة لإدارة الأوبئة وتحسين توزيع الموارد في قطاع الرعاية الصحية. يحقق المشروع فيما إذا كان تحليل الذكاء الاصطناعي لأصوات السعال المتعمد يمكنه التمييز بدقة بين الأفراد الأصحاء والمصابين بعدوى تنفسية، مع جمع بيانات عالية الجودة من مرضى الإمارات وتدريب خوارزمية إثبات المفهوم لسوق الإمارات.</p>
+          <p>نحن رواد في إحداث تحول عالمي في فحوصات الصحة. من خلال تسخير قوة الذكاء الاصطناعي وبساطة الهاتف الذكي، نقدم كشفًا فوريًا ومنخفض التكلفة وغير جراحي للحالات التنفسية. مهمتنا هي تمكين المرضى والأطباء والحكومات من خلال تكنولوجيا متقدمة وسهلة الوصول، لجعل الرعاية الصحية الاستباقية حقيقة للجميع.</p>
           <img src="heatmap.png" alt="خريطة حرارية لانتشار الأمراض التنفسية في دبي" style="max-width:100%;height:auto;margin:24px auto;border-radius:8px;display:block;" />
         </section>
 
-        <section id="project-ar">
-          <h2>مهمتنا</h2>
-          <p>نطمح إلى إعادة تعريف الرعاية الصحية بجعلها استباقية ووقائية من خلال الذكاء الاصطناعي المتقدم. هدفنا هو تمكين التشخيص السريع والموثوق الذي يمنح الأفراد ومقدمي الرعاية القوة. حلمنا هو بناء معيار عالمي لأدوات طبية ذكية وسهلة الاستخدام.</p>
+        <section id="technology-ar">
+          <h2>تقنيتنا</h2>
+          <p>منصتنا مبنية على أساس من الأبحاث العالمية والبيانات الواسعة. نستخدم نهج ذكاء اصطناعي جماعي حاصل على براءة اختراع، تم تطويره بالتعاون مع باحثين رائدين من جامعتي ستانفورد وواشنطن، لتحليل أنماط الأصوات الناتجة عن التنفس والسعال.</p>
           <ul>
-            <li>تطوير وتوثيق تطبيق هاتف ذكي آمن وسهل الاستخدام لجمع عينات أصوات السعال والتنفس والكلام من المشاركين، مع ضمان الامتثال للوائح الإماراتية.</li>
-            <li>جمع بيانات صوتية سريرية عالية الجودة من مرضى بالغين يوافقون على المشاركة ويخضعون لاختبارات تشخيصية قياسية في عيادات شريكة في دبي (الهدف: 120 مشاركًا على الأقل، 50% منهم حالات إيجابية).</li>
-            <li>معالجة البيانات الصوتية المجمعة (تنقية الضوضاء، التقسيم، استخراج الميزات) لضمان جودتها وملاءمتها لتدريب نماذج الذكاء الاصطناعي.</li>
-            <li>تدريب خوارزمية إثبات المفهوم باستخدام تقنيات التعلم الآلي لتصنيف الأفراد كأصحاء أو غير أصحاء بناءً على ميزات مستخرجة من أصوات السعال.</li>
-            <li>التحقق من أداء النموذج المستهدف (حساسية ونوعية لا تقل عن 75%) مقارنة بالاختبارات التشخيصية القياسية باستخدام طرق إحصائية مناسبة.</li>
-            <li>تقييم جدوى هذا النهج لتحسين مراقبة الأمراض التنفسية والكشف المبكر ضمن منظومة الرعاية الصحية في الإمارات.</li>
-            <li>دعم الاستعداد الصحي العام والإدارة الاستباقية للأمراض التنفسية في مراكز الرعاية الأولية، والمنصات الصحية عن بعد، والمؤسسات التعليمية، والفعاليات الكبرى، ومراكز النقل.</li>
+            <li><b>مجموعة بيانات ضخمة ومتنوعة:</b> يتم تدريب خوارزمياتنا باستخدام التعلم الانتقالي من مجموعة بيانات تحتوي على أكثر من 256,600 مريض تم اختبارهم عبر فحص PCR، مما يضمن القوة والدقة.</li>
+            <li><b>أداء رائد:</b> حققنا دقة تصل إلى 84٪ في الكشف عن فيروس كوفيد-19، مما يبرز قوة تقنيتنا الفريدة.</li>
+            <li><b>آمن حسب التصميم:</b> تم بناء نظامنا على بنية تحتية سحابية آمنة، مع الالتزام الكامل بقانون حماية البيانات الاتحادي في الإمارات العربية المتحدة ولوائح هيئة الصحة بدبي (DHA) لمعالجة وتخزين بيانات المستخدمين.</li>
+            <li><b>تم التحقق منه من قبل الحكومة الأمريكية:</b> أكملنا بنجاح عقد بحث وتطوير مع وزارة الصحة والخدمات الإنسانية الأمريكية (HHS) BARDA، لتطوير نموذج إثبات المفهوم لخوارزمية التشخيص الخاصة بنا.</li>
+            <li><b>تطبيق فعلي في العالم الحقيقي:</b> تم إصدار تطبيقنا التجريبي لـ 4,500 مستخدم في كولومبيا، مما أثبت فعاليته في بيئة واقعية.</li>
+          </ul>
+          
+        </section>
+
+        <section id="vision-ar">
+          <h2>رؤيتنا للرعاية الصحية الاستباقية</h2>
+          <p>نتطلع إلى مستقبل تكون فيه الرعاية الصحية استباقية ووقائية. يهدف هذا المشروع إلى تطوير تطبيق هاتف ذكي للفحص السريع وبتكلفة منخفضة للأمراض التنفسية المعدية مثل الإنفلونزا وRSV وكوفيد-19. هدفنا هو إنشاء معيار عالمي جديد لأدوات الذكاء الاصطناعي الطبية الذكية وسهلة الاستخدام التي توفر تشخيصًا مبكرًا ودقيقًا، مما يمكّن الأفراد والمتخصصين من اتخاذ إجراءات أسرع ويجعل الإمارات رائدة عالميًا في حماية الصحة العامة المتقدمة.</p>
+          <img src="AI Healthcare.png" alt="مخطط فحص الصحة التنفسية بالذكاء الاصطناعي" style="max-width:500px;width:100%;height:auto;margin:24px auto;display:block;border-radius:8px;" />
+          <ul>
+            <li><b>جمع البيانات:</b> السعال في تطبيق الهاتف الذكي</li>
+            <li><b>تحليل الذكاء الاصطناعي:</b> الذكاء الاصطناعي يكتشف أنماط أصوات الأمراض</li>
+            <li><b>حالات الاستخدام:</b> فحص العدوى التنفسية، التحقق من حالة التدخين، فحص الربو، الحج/العمرة، شركات التأمين، المدارس</li>
+          </ul>
+          <!-- <p style="font-size:0.95em;color:#555;margin-top:8px;">*ابتكار ذكاء اصطناعي حاصل على براءة اختراع تم تطويره بالتعاون مع جامعة ستانفورد</p> -->
+        </section>
+
+        <section id="applications-ar">
+          <h2>التطبيقات المحتملة</h2>
+          <ul>
+            <li><b>التجمعات العامة الكثيفة:</b> فحص ملايين الحجاج بسرعة في مناسبات مثل الحج والعمرة لاكتشاف الإنفلونزا وRSV وكوفيد-19 قبل حدوث تفشيات.</li>
+            <li><b>المطارات ونقاط الحدود:</b> تنفيذ فحوصات مستهدفة للمسافرين من المناطق عالية الخطورة للحد من استيراد الأمراض المعدية.</li>
+            <li><b>المؤسسات التعليمية:</b> تسهيل الفحص المنتظم في المدارس ورياض الأطفال لاكتشاف العدوى قبل انتشارها بين الأطفال وعائلاتهم.</li>
+            <li><b>الرعاية الصحية والتأمين:</b> دمج الحل في سير العمل بالمستشفيات والعيادات لفحص المرضى ذوي الأعراض التنفسية قبل اللجوء لاختبارات أكثر تكلفة، مما يحسن الكفاءة.</li>
+            <li><b>الرعاية الصحية عن بعد:</b> تعزيز الاستشارات الافتراضية من خلال تمكين الكشف المبكر عن العدوى التنفسية، مما يسمح لسكان المناطق النائية بالحصول على رعاية صحية حاسمة.</li>
+          </ul>
+        </section>
+
+        <section id="leadership-ar">
+          <h2>القيادة</h2>
+          <ul>
+            <li><b><a href="https://www.linkedin.com/in/amilkhanzada" target="_blank">أميل خانزادا</a>، المؤسس والرئيس التنفيذي:</b> خريج متميز في علوم الحاسوب من جامعة كاليفورنيا بيركلي، بخلفية في برنامج ماجستير إدارة الأعمال/الذكاء الاصطناعي ببيركلي/ستانفورد، وأكثر من عشر سنوات من الخبرة في تطوير البرمجيات وإدارة دراسات جمع بيانات السعال السريرية.</li>
+            <li><b>البروفيسور ليس أطلس، الشريك المؤسس والمدير التقني:</b> أستاذ الهندسة الكهربائية وهندسة الحاسوب في جامعة واشنطن وزميل مدى الحياة في IEEE. خبير رائد في معالجة الإشارات الصوتية وحاصل على دكتوراه من جامعة ستانفورد، وطور مفاهيم أساسية في الشبكات العصبية الالتفافية.</li>
+            <li><b>تامر فهمي، مستشار اللوائح التنظيمية لمنطقة الشرق الأوسط وشمال أفريقيا:</b> مستشار ذو خبرة تزيد عن 20 عامًا في قطاع الرعاية الصحية في شركتي Philips وDräger. حاصل على ماجستير إدارة الأعمال من SP Jain وبكالوريوس في الهندسة الطبية الحيوية من جامعة القاهرة.</li>
           </ul>
         </section>
 
@@ -232,13 +303,9 @@
         <section id="partners-ar">
           <h2>الشركاء</h2>
           <p>
-            لدى نَفَسي.إي آي أهداف طموحة للتطبيقات والأثر الذي يمكن أن تخلقه تقنيتها على مستوى العالم، وقد اختارت دولة الإمارات مركزًا لإطلاقها. المشروع هو جزء من برنامج تطوير المشاريع "نماذج من أجل الإنسانية" في دبي، ويتعاون ضمنه مع جامعة محمد بن راشد للطب والعلوم الصحية (MBRU)، الذراع التعليمية والاكتشافية لدبي الصحية، بالإضافة إلى جامعة خليفة.
+            لدى نَفَسي.إي آي أهداف طموحة للتطبيقات والأثر الذي يمكن أن تخلقه تقنيتها على مستوى العالم، وقد اختارت دولة الإمارات مركزًا لإطلاقها. المشروع هو جزء من برنامج تطوير المشاريع "نماذج من أجل الإنسانية" في دبي، ويتعاون ضمنه مع جامعة محمد بن راشد للطب والعلوم الصحية (MBRU)، الذراع التعليمية والاكتشافية لدبي الصحية، بالإضافة إلى أعضاء هيئة التدريس من جامعة واشنطن.
           </p>
-          <div style="display: flex; gap: 32px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 16px;">
-            <img src="KU.png" alt="شعار جامعة خليفة" style="height: 100px; max-width: 220px; width: auto;" />
-            <img src="MBRU.png" alt="شعار جامعة محمد بن راشد للطب والعلوم الصحية" style="height: 100px; max-width: 220px; width: auto;" />
-            <img src="dh.png" alt="شعار دبي الصحية" style="height: 100px; max-width: 220px; width: auto;" />
-          </div>
+          
         </section>
       </section>
     </main>
